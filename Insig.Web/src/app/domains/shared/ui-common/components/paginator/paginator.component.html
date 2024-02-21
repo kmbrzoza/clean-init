@@ -1,0 +1,12 @@
+@if(pagedData.totalCount && pagedData.totalCount > 0 && totalPages > 1){
+<div class="paginator">
+    <mat-paginator #paginator
+                   csStylePaginator
+                   [length]="pagedData.totalCount"
+                   [pageSize]="pageSize"
+                   [pageSizeOptions]="pageSizeOptions"
+                   [showFirstLastButtons]="false"
+                   (page)="onPageChanged($event)">
+    </mat-paginator>
+</div>
+}

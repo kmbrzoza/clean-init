@@ -1,0 +1,252 @@
+{
+    "root": true,
+    "ignorePatterns": [
+        "projects/**/*",
+        "auth.config.ts",
+        "typing.d.ts"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "*.ts"
+            ],
+            "parserOptions": {
+                "project": [
+                    "tsconfig.json",
+                    "e2e/tsconfig.json"
+                ],
+                "createDefaultProgram": true
+            },
+            "extends": [
+                "plugin:@softarc/sheriff/default",
+                "eslint:recommended",
+                "plugin:@typescript-eslint/recommended",
+                "plugin:@angular-eslint/recommended",
+                "plugin:@angular-eslint/template/process-inline-templates"
+            ],
+            "plugins": [
+                "import",
+                "deprecation"
+            ],
+            "rules": {
+                "linebreak-style": 0,
+                "no-multiple-empty-lines": "error",
+                "@typescript-eslint/quotes": [
+                    "error",
+                    "single"
+                ],
+                "indent": "off",
+                "@typescript-eslint/indent": [
+                    "error",
+                    4
+                ],
+                "max-len": [
+                    1,
+                    140,
+                    2,
+                    {
+                        "ignorePattern": "^import\\s.+\\sfrom\\s.+;$",
+                        "ignoreUrls": true
+                    }
+                ],
+                "comma-dangle": "off",
+                "@typescript-eslint/comma-dangle": [
+                    "error",
+                    "never"
+                ],
+                "class-methods-use-this": "off",
+                "no-console": "error",
+                "no-empty": "error",
+                "no-empty-function": "off",
+                "no-restricted-syntax": "off",
+                "@typescript-eslint/no-empty-function": [
+                    "error",
+                    {
+                        "allow": []
+                    }
+                ],
+                "@typescript-eslint/lines-between-class-members": "off",
+                "@typescript-eslint/no-explicit-any": "error",
+                "import/prefer-default-export": "off",
+                "import/order": [
+                    "error",
+                    {
+                        "newlines-between": "always", // <-- Changed configuration here to get proper imports order I want
+                        "groups": [ // <-- Changed configuration here to get proper imports order I want
+                            "external", // all libraries imports - configured in 'import/external-module-folders'
+                            "unknown", // rxjs imports
+                            "internal", // angular imports - configured in 'import/internal-regex'
+                            "builtin", // internal-library imports
+                            [
+                                "parent",
+                                "sibling",
+                                "index"
+                            ] // relative paths
+                        ],
+                        "pathGroups": [ // <-- Changed configuration here to get proper imports order I want
+                            {
+                                "pattern": "rxjs",
+                                "group": "unknown"
+                            },
+                            {
+                                "pattern": "rxjs/**",
+                                "group": "unknown"
+                            },
+                            {
+                                "pattern": "@core/**",
+                                "group": "internal"
+                            },
+                            {
+                                "pattern": "@domains/**",
+                                "group": "internal"
+                            },
+                            {
+                                "pattern": "@shared/**",
+                                "group": "internal"
+                            }
+                        ],
+                        "pathGroupsExcludedImportTypes": [
+                            "type",
+                            "object"
+                        ]
+                    }
+                ],
+                "import/no-extraneous-dependencies": 0,
+                "object-curly-newline": "off",
+                "no-eq-null": "error",
+                "eqeqeq": "error",
+                "no-underscore-dangle": [
+                    "error",
+                    {
+                        "allowAfterThis": true
+                    }
+                ],
+                "no-else-return": "off",
+                "deprecation/deprecation": "warn",
+                "@typescript-eslint/no-floating-promises": "off",
+                "@typescript-eslint/unbound-method": "off",
+                "@typescript-eslint/no-unsafe-assignment": "off",
+                "@typescript-eslint/no-unsafe-member-access": "off",
+                "@typescript-eslint/member-ordering": [
+                    "error",
+                    {
+                        "default": {
+                            "memberTypes": [
+                                "public-decorated-field",
+                                "public-static-field",
+                                "protected-static-field",
+                                "private-static-field",
+                                "public-instance-field",
+                                "public-abstract-field",
+                                "protected-instance-field",
+                                "protected-decorated-field",
+                                "protected-abstract-field",
+                                "private-instance-field",
+                                "private-decorated-field",
+                                "static-field",
+                                "public-field",
+                                "instance-field",
+                                "protected-field",
+                                "private-field",
+                                "abstract-field",
+                                "constructor",
+                                "public-static-method",
+                                "protected-static-method",
+                                "private-static-method",
+                                "public-method",
+                                "protected-method",
+                                "private-method"
+                            ]
+                        }
+                    }
+                ],
+                "@typescript-eslint/no-unused-vars": [
+                    "error",
+                    {
+                        "argsIgnorePattern": "^_"
+                    }
+                ],
+                "no-shadow": "off",
+                "@typescript-eslint/no-shadow": [
+                    "error"
+                ],
+                "@typescript-eslint/naming-convention": [
+                    "error",
+                    {
+                        "selector": [
+                            "property",
+                            "parameterProperty"
+                        ],
+                        "modifiers": [
+                            "private"
+                        ],
+                        "format": [
+                            "camelCase"
+                        ],
+                        "leadingUnderscore": "require"
+                    },
+                    {
+                        "selector": [
+                            "property",
+                            "method"
+                        ],
+                        "format": [
+                            "camelCase"
+                        ]
+                    },
+                    {
+                        "selector": [
+                            "class",
+                            "enum",
+                            "interface",
+                            "typeAlias"
+                        ],
+                        "format": [
+                            "PascalCase"
+                        ]
+                    },
+                    {
+                        "selector": [
+                            "objectLiteralProperty"
+                        ],
+                        "format": null
+                    }
+                ],
+                "@angular-eslint/component-selector": [
+                    "error",
+                    {
+                        "prefix": "app",
+                        "style": "kebab-case",
+                        "type": "element"
+                    }
+                ],
+                "@angular-eslint/directive-selector": [
+                    "error",
+                    {
+                        "prefix": "app",
+                        "style": "camelCase",
+                        "type": "attribute"
+                    }
+                ]
+            }
+        },
+        {
+            "files": [
+                "*.html"
+            ],
+            "extends": [
+                "plugin:@angular-eslint/template/recommended",
+                "plugin:@angular-eslint/template/accessibility"
+            ],
+            "parser": "@angular-eslint/template-parser",
+            "rules": {
+                "max-len": [
+                    "error",
+                    {
+                        "code": 140
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,33 @@
+@use "breakpoint-sizes" as sizes;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1400px
+);
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: map-get(sizes.$up, "sm"),
+  md: map-get(sizes.$up, "md"),
+  lg: map-get(sizes.$up, "lg"),
+  xl: map-get(sizes.$up, "xl"),
+  xxl: map-get(sizes.$up, "xxl")
+);
+
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins/breakpoints";
+@import "bootstrap/scss/mixins/container";
+@import "bootstrap/scss/mixins/grid";
+@import "bootstrap/scss/mixins/utilities";
+
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/utilities/api";

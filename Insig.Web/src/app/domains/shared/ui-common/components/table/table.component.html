@@ -1,0 +1,39 @@
+<div class="table">
+    @if(data$ | async; as data){
+    <div class="table__content">
+        @if(isLoading$ | async){
+        <div class="table__loading">
+            <mat-progress-spinner color="primary"
+                                  mode="indeterminate"
+                                  diameter="50">
+            </mat-progress-spinner>
+        </div>
+        }
+        <table #table
+               mat-table
+               [dataSource]="data.items">
+
+            <tr mat-header-row
+                *matHeaderRowDef="columns$ | async"></tr>
+            <tr mat-row
+                *matRowDef="let row; columns: columns$ | async;"
+                (click)="onRowClick(row)"></tr>
+            <tr *matNoDataRow>
+                <td [attr.colspan]="(columns$ | async)?.length"
+                    class="table__no-data">
+                    No data
+                </td>
+            </tr>
+        </table>
+    </div>
+    <app-paginator [data]="data"
+                   (pageChanged)="onPageChange($event)" />
+    } @else {
+    <div class="d-flex justify-content-center my-4">
+        <mat-progress-spinner color="primary"
+                              mode="indeterminate"
+                              diameter="50">
+        </mat-progress-spinner>
+    </div>
+    }
+</div>

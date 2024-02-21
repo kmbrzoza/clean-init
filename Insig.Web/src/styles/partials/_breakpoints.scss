@@ -1,0 +1,31 @@
+@use "../libraries/bootstrap/breakpoint-sizes" as breakpoints;
+
+@mixin size($breakpoint, $custom: false) {
+    @if ($custom) {
+        @media (max-width: $breakpoint) {
+            @content;
+        }
+    } @else if map-has-key(breakpoints.$down, $breakpoint) {
+        @media (max-width: map-get(breakpoints.$down, $breakpoint)) {
+            @content;
+        }
+    } @else {
+        @warn "`#{$breakpoint}` does not exists."
+        + " Available breakpoints are: #{map-keys(breakpoints.$down)}.";
+    }
+}
+
+@mixin size-up($breakpoint, $custom: false) {
+    @if ($custom) {
+        @media (min-width: $breakpoint) {
+            @content;
+        }
+    } @else if map-has-key(breakpoints.$up, $breakpoint) {
+        @media (min-width: map-get(breakpoints.$up, $breakpoint)) {
+            @content;
+        }
+    } @else {
+        @warn "`#{$breakpoint}` does not exists."
+        + " Available breakpoints are: #{map-keys(breakpoints.$up)}.";
+    }
+}

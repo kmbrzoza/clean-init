@@ -1,0 +1,18 @@
+@if(profileImagePath){
+    <div [style.height.px]="avatarSizePx"
+        [style.width.px]="avatarSizePx"
+        class="position-relative">
+        <img [src]="profileImagePath"
+            class="profile-avatar profile-avatar--image"
+            [style.height.px]="avatarSizePx"
+            [style.width.px]="avatarSizePx"
+            alt="Profile avatar" />
+    </div>
+} @else {
+    <div class="profile-avatar profile-avatar--initials position-relative"
+        [style.font-size.px]="initialsFontSizePx"
+        [style.height.px]="avatarSizePx"
+        [style.width.px]="avatarSizePx">
+        {{initials}}
+    </div>
+}

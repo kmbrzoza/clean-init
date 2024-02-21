@@ -1,0 +1,26 @@
+@import "common";
+
+.entry-item {
+    #email {
+        margin-bottom: 40px;
+    }
+
+    #forgotPassword {
+        position: absolute;
+        margin-top: 79px;
+    }
+}
+
+.buttons {
+    margin-top: 100px;
+}
+
+.create {
+    margin-top: 40px;
+}
+
+div.error.itemLevel {
+    margin-top: 40px;
+    margin-left: 17px;
+    position: absolute;
+}

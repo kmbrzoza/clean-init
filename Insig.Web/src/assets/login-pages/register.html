@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sign up</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <style>
+        main {
+            display: none;
+        }
+    </style>
+    <script>
+        const mainUri = "http://localhost:4200";
+        if (!!mainUri) {
+            const styles = document.createElement("link");
+            styles.rel = "stylesheet";
+            styles.type = "text/css";
+            styles.href = `${mainUri}/register-page.css`;
+            styles.setAttribute("data-preload", "true");
+            document.head.append(styles);
+        }
+    </script>
+</head>
+
+<body>
+    <main>
+        <div class="card">
+            <div id="api">
+            </div>
+            <div class="have-account"> Already have an account?
+                <span>
+                    <a id="logIn"
+                       onclick="goBack()">Sign in</a>
+                </span>
+            </div>
+        </div>
+    </main>
+</body>
+<script>
+    function goBack() {
+        history.back();
+    }
+
+    const button = document.getElementById("emailVerificationControl_but_change_claims");
+    const element = document.getElementById("continue");
+    const observer = new MutationObserver(function (mutationsList) {
+        for (let mutation of mutationsList) {
+            if (
+                mutation.type === "attributes" &&
+                mutation.attributeName === "style" &&
+                mutation.target.style.display === "inline"
+            ) {
+                element.classList.add("visibleContinue");
+            }
+            if (
+                mutation.type === "attributes" &&
+                mutation.attributeName === "style" &&
+                mutation.target.style.display === "none"
+            ) {
+                element.classList.remove("visibleContinue");
+            }
+        }
+    });
+    observer.observe(button, { attributes: true, attributeFilter: ["style"] });
+
+    const commonScript = document.createElement("script");
+    commonScript.setAttribute("src", `${mainUri}/assets/login-pages/common.js`);
+    document.body.appendChild(commonScript);
+</script>
+
+</html>

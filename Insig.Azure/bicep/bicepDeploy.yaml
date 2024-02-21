@@ -1,0 +1,21 @@
+pool:
+  name: Azure Pipelines
+  vmImage: "windows-latest"
+
+# EXAMPLE VARIABLES (you need to add them on Azure DevOps)
+# variables:
+#   ServicesLocation: 'westeurope'
+#   MainBicepPath: 'Insig.Azure/bicep/main.bicep'
+#   ProjectName: 'insig'
+#   SqlServerPassword: 'ChangeYourPassword'
+#   ServicesEnvironment: 'uat'
+#   AddFrontDoor: 'false'
+
+steps:
+- task: AzureCLI@2
+  displayName: 'Azure CLI - Bicep deploy'
+  inputs:
+    azureSubscription: 'Płatność zgodnie z rzeczywistym użyciem (7cca7e30-f6d4-4138-9247-af1e22e9c406)'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az deployment sub create --location $(ServicesLocation) --template-file "$(MainBicepPath)" --parameters projectName="$(ProjectName)" sqlServerPassword="$(SqlServerPassword)" environment="$(ServicesEnvironment)" addFrontDoor=$(AddFrontDoor) location="$(ServicesLocation)" wafEnableLimitToPoland=$(WafEnableLimitToPoland)'

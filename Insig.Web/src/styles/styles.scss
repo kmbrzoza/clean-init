@@ -1,0 +1,17 @@
+//fonts
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined");
+
+//libraries
+@import 'ngx-toastr/toastr';
+@import "@ng-select/ng-select/scss/material.theme.scss";
+
+//libraries usage
+@import "libraries/bootstrap/utilities";
+@import "libraries/material/theme";
+@import "libraries/ng-select/override";
+@import "libraries/calendar/calendar";
+
+//custom
+@import "common/scrollbar";
+@import "main";
+

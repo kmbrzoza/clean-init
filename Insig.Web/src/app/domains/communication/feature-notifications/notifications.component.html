@@ -1,0 +1,24 @@
+<div class="notifications">
+    <app-page-header header="Powiadomienia" />
+    <app-table>
+        <app-table-column [column]="{key: 'title', title: 'Tytuł'}" />
+        <app-table-column [column]="{key: 'body', title: 'Treść'}" />
+        <app-table-column [column]="{key: 'createdOn', title: 'Stworzona', templateRef: createdOnTemplate}" />
+        <app-table-actions [editable]="false"
+                           [actionTmpl]="actionTemplate">
+            <ng-template #actionTemplate
+                         let-item>
+                <button mat-icon-button
+                        [disabled]="item.statusId === notificationStatus.Completed"
+                        (click)="onPreviewClick(item)">
+                    <mat-icon>visibility</mat-icon>
+                </button>
+            </ng-template>
+        </app-table-actions>
+    </app-table>
+</div>
+
+<ng-template #createdOnTemplate
+             let-value="value">
+    {{ value | date:'dd/MM/yyyy' }}
+</ng-template>

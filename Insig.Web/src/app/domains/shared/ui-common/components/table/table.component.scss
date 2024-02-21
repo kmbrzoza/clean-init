@@ -1,0 +1,54 @@
+@use "variables" as var;
+
+$table-header-text: #476F84;
+
+.table {
+    $self: &;
+    margin: 0;
+    min-width: 100%;
+
+    &__content {
+        position: relative;
+        overflow-x: auto;
+
+        #{$self}__loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.6);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+        }
+
+        table {
+            margin: 0;
+            min-width: 100%;
+
+            &::ng-deep {
+                thead tr {
+
+                    th.mat-mdc-header-cell {
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
+                }
+
+                tbody {
+                    tr {
+
+                        td.mat-mdc-cell {
+                            font-size: 14px;
+                        }
+
+                        td {
+                            max-width: 150px;
+                            color: var.$font-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

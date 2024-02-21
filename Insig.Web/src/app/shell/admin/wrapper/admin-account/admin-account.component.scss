@@ -1,0 +1,22 @@
+@use "palette";
+
+.admin-account {
+    div[matListItemTitle].user {
+        font-weight: 600;
+    }
+
+    div[matListItemIcon].avatar {
+        border-radius: 50%;
+        background-color: palette.$accent-100;
+        color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 500;
+        letter-spacing: 0.15px;
+        font-size: 14px;
+        height: 36px;
+        width: 36px;
+        margin-right: 20px;
+    }
+}

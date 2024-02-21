@@ -1,0 +1,29 @@
+<div class="admin-account">
+    <mat-list>
+        <div mat-subheader
+             [class.d-none]="collapsed()">Konto</div>
+        <mat-list-item>
+            <div matListItemIcon
+                 class="avatar">
+                {{account().username.at(0)}}
+            </div>
+            <div matListItemTitle
+                 class="user">
+                {{ account().username }}
+            </div>
+        </mat-list-item>
+        <mat-list-item routerLink="notifications"
+                       routerLinkActive="active"
+                       [routerLinkActiveOptions]="{exact: true}">
+            <div matListItemIcon
+                 [matBadge]="unreadMessagesCount$ | async"
+                 [matBadgeSize]="'small'"
+                 [matBadgePosition]="'above'"
+                 [matBadgeColor]="'warn'"
+                 [matBadgeOverlap]="false">
+                <mat-icon fontSet="material-icons-outlined">notifications</mat-icon>
+            </div>
+            <div matListItemTitle>Powiadomienia</div>
+        </mat-list-item>
+    </mat-list>
+</div>

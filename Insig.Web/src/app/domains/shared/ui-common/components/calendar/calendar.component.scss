@@ -1,0 +1,42 @@
+@use "palette";
+
+full-calendar::ng-deep {
+    .fc-event-time {
+        min-width: 40px;
+    }
+
+    .fc-button-primary {
+        background-color: palette.$primary;
+        border-color: palette.$primary;
+
+        &:hover,
+        &.fc-button-active:not(:disabled),
+        &:active:not(:disabled),
+        &:disabled {
+            background-color: palette.$primary-300;
+            border-color: palette.$primary-300;
+        }
+    }
+
+    .fc-daygrid-event {
+        cursor: pointer;
+
+        &:hover {
+            filter: contrast(0.9);
+        }
+
+        &.fc-event-end {
+            margin-right: 8px;
+
+        }
+
+        &.fc-event-start {
+            margin-left: 8px;
+        }
+    }
+
+    .fc-list-day-side-text {
+        float: left;
+        margin-left: 10px;
+    }
+}

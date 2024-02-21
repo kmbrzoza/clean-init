@@ -1,0 +1,18 @@
+@use "variables" as var;
+
+#columnName {
+    text-align: center;
+}
+
+.table-actions {
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &-action-button {
+        cursor: pointer;
+        border: none;
+        background: none;
+    }
+}

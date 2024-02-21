@@ -1,0 +1,91 @@
+@import "common";
+
+.helpLink {
+    display: none;
+}
+
+button#cancel {
+    display: none;
+}
+
+
+input#newPassword,
+input#reenterPassword,
+input#emailVerificationCode {
+    margin-top: 30px !important;
+}
+
+button#emailVerificationControl_but_send_code,
+button#continue,
+button#emailVerificationControl_but_verify_code,
+div.have-account {
+    margin-top: 40px;
+}
+
+input#newPassword:disabled,
+input#reenterPassword:disabled,
+button#continue:disabled,
+div#emailVerificationControl_success_message,
+button#emailVerificationControl_but_send_new_code {
+    display: none !important;
+}
+
+div#fieldIncorrect,
+div#requiredFieldMissing {
+    max-width: 350px;
+    word-wrap: break-word;
+    margin: auto;
+}
+
+#continue {
+    display: none;
+}
+
+
+.visibleContinue {
+    display: block !important;
+}
+
+button#emailVerificationControl_but_change_claims {
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+}
+
+.error.itemLevel.show {
+    position: absolute;
+    margin-top: 51px;
+    margin-left: 18px;
+}
+
+div#emailVerificationControl_error_message {
+    margin-bottom: 30px;
+    display: block;
+}
+
+.TextBox.emailVerificationCode_li.VerificationCode {
+    .error.itemLevel.show {
+        position: absolute;
+        margin-top: 82px;
+        margin-left: 18px;
+    }
+}
+
+.Password.newPassword_li {
+    .error.itemLevel.show {
+        position: inherit !important;
+        margin-left: 14px;
+        margin-top: 30px;
+        text-align: left;
+        margin-bottom: -20px;
+    }
+}
+
+.Password.reenterPassword_li {
+    .error.itemLevel.show {
+        position: absolute;
+        margin-top: 83px;
+        margin-left: 16px;
+        max-width: 323px;
+    }
+}

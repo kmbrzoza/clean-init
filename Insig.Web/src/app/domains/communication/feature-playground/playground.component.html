@@ -1,0 +1,49 @@
+<div class="playground">
+    <app-page-header header="Playground" />
+    <div class="playground__content">
+        <div>
+            <h2>Powiadomienia</h2>
+            <app-spinner-button [loading]="isNotificationSending()"
+                                (clicked)="onSendNotificationClick()">
+                Wyślij powiadomienie
+            </app-spinner-button>
+        </div>
+        <div>
+            <h2>E-mail</h2>
+            <mat-form-field>
+                <mat-label>E-mail</mat-label>
+                <input matInput
+                       type="text"
+                       [formControl]="email" />
+                <mat-error>
+                    <app-validation-feedback [control]="email" />
+                </mat-error>
+            </mat-form-field>
+            <div>
+                <app-spinner-button [loading]="isEmailSending()"
+                                    (clicked)="onSendEmailClick()">
+                    Wyślij e-mail
+                </app-spinner-button>
+            </div>
+        </div>
+        <div>
+            <h2>Pliki</h2>
+            <button mat-flat-button
+                    color="accent"
+                    (click)="input.click()">
+                Wgraj plik
+            </button>
+            <input #input
+                   type="file"
+                   [hidden]="true"
+                   (change)="onFileChange($event)" />
+            @if(uploadedFile(); as file){
+            <div class="mt-4">
+                <a [href]="file.filePath"
+                   target="_blank">{{ file.name }}
+                </a>
+            </div>
+            }
+        </div>
+    </div>
+</div>

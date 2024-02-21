@@ -1,0 +1,54 @@
+<ng-container [matColumnDef]="columnKey"
+              stickyEnd>
+    <th id="columnName"
+        mat-header-cell
+        *matHeaderCellDef
+        [style.maxWidth.px]="150"
+        [style.width.px]="150">
+        Actions
+        @if(selectionMenuActionsTmpl){
+        <ng-container [ngTemplateOutlet]="selectionMenuActionsTmpl"
+                      [ngTemplateOutletContext]="{$implicit: selections, isAllSelected: isAllSelected$ | async}">
+        </ng-container>
+        }
+    </th>
+    <td mat-cell
+        #actions
+        *matCellDef="let element"
+        [style.maxWidth.px]="150"
+        [style.width.px]="150">
+        <div class="table-actions">
+            @if(previewVisible){
+            <button mat-icon-button
+                    (click)="onPreviewClicked(element)"
+                    class="table-actions__preview material-icons-outlined">
+                <mat-icon fontSet="material-icons-outlined">visibility</mat-icon>
+            </button>
+            }
+            @if(editable){
+            <a (click)="edit(element)"
+               (keyup.enter)="edit(element)"
+               mat-icon-button
+               tabindex="0"
+               color="primary"
+               class="table-actions-action-button material-icons-outlined">
+                <mat-icon outlined>edit</mat-icon>
+            </a>
+            }
+            @if(deletable){
+            <a (click)="delete(element)"
+               (keyup.enter)="delete(element)"
+               mat-icon-button
+               tabindex="0"
+               color="primary"
+               class="table-actions-action-button material-icons-outlined">
+                <mat-icon>delete</mat-icon>
+            </a>
+            }
+            @if(actionTmpl){
+            <ng-container [ngTemplateOutlet]="actionTmpl"
+                          [ngTemplateOutletContext]="{$implicit: element}"></ng-container>
+            }
+        </div>
+    </td>
+</ng-container>

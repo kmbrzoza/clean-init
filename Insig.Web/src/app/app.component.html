@@ -1,0 +1,9 @@
+<ng-container *ngIf="!!(isLoading$ | async) === false else loading">
+    <router-outlet></router-outlet>
+</ng-container>
+
+<ng-template #loading>
+    <div class="loader">
+        <mat-spinner [diameter]="50"></mat-spinner>
+    </div>
+</ng-template>

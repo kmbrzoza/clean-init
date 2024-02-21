@@ -1,0 +1,45 @@
+@use "variables" as var;
+@use "palette";
+
+.menu {
+    $self: &;
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 22px;
+        height: 34px;
+        align-items: center;
+
+        li {
+
+            #{$self}__item {
+                color: var.$font-color;
+                text-decoration: none;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 24px;
+                letter-spacing: 0.15px;
+                position: relative;
+                padding: 3px 5px;
+
+                &--active {
+                    color: palette.$primary;
+                }
+            }
+
+            #{$self}__item--info {
+                background-color: palette.$accent;
+                border-radius: 2px;
+                color: #FFFFFF;
+                padding: 3px 12px;
+
+                &:hover {
+                    background-color: palette.$accent-700;
+                }
+            }
+        }
+    }
+}

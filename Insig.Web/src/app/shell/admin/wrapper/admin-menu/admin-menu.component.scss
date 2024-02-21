@@ -1,0 +1,44 @@
+@use "variables";
+@use "palette";
+
+mat-list {
+    div[mat-subheader] {
+        font-size: 1.4rem;
+        font-weight: 500;
+        line-height: 18px;
+        text-transform: uppercase;
+        color: variables.$disabled;
+    }
+    mat-list-item {
+        border-left: 3px solid transparent;
+        cursor: pointer;
+
+        &:hover {
+            background-color: palette.$tertiary-100;
+        }
+
+        &.active,
+        &:hover {
+            border-color: palette.$primary-500;
+
+            div[matListItemTitle] {
+                color: palette.$primary-500;
+                font-weight: 500;
+            }
+
+            mat-icon {
+                color: palette.$primary-500;
+            }
+        }
+
+        mat-icon {
+            color: variables.$font-color;
+        }
+
+        &.logout {
+            position: absolute;
+            z-index: 1;
+            bottom: 30px;
+        }
+    }
+}

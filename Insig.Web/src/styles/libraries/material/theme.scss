@@ -1,0 +1,106 @@
+@use "@angular/material" as mat;
+@use "typography" as typ;
+@use "../../partials/variables" as var;
+@use "../../partials/palette";
+@use "sass:map";
+@include mat.core();
+
+$primary: (
+    50: palette.$primary-50,
+    100: palette.$primary-100,
+    200: palette.$primary-200,
+    300: palette.$primary-300,
+    400: palette.$primary-400,
+    500: palette.$primary-500,
+    600: palette.$primary-600,
+    700: palette.$primary,
+    800: palette.$primary-800,
+    900: palette.$primary-900,
+    contrast: (
+        50: var.$font-color,
+        100: var.$font-color,
+        200: var.$font-color,
+        300: var.$font-color,
+        400: var.$font-color,
+        500: #ffffff,
+        600: #ffffff,
+        700: #ffffff,
+        800: #ffffff,
+        900: #ffffff
+    )
+);
+
+$accent: (
+    50: palette.$accent-50,
+    100: palette.$accent-100,
+    200: palette.$accent-200,
+    300: palette.$accent-300,
+    400: palette.$accent-400,
+    500: palette.$accent,
+    600: palette.$accent-600,
+    700: palette.$accent-700,
+    800: palette.$accent-800,
+    900: palette.$accent-900,
+    contrast: (
+        50: var.$font-color,
+        100: var.$font-color,
+        200: var.$font-color,
+        300: var.$font-color,
+        400: var.$font-color,
+        500: var.$font-color,
+        600: var.$font-color,
+        700: #ffffff,
+        800: #ffffff,
+        900: #ffffff
+    )
+);
+
+$warn: (
+    50: palette.$warn-50,
+    100: palette.$warn-100,
+    200: palette.$warn-200,
+    300: palette.$warn-300,
+    400: palette.$warn-400,
+    500: palette.$warn,
+    600: palette.$warn-600,
+    700: palette.$warn-700,
+    800: palette.$warn-800,
+    900: palette.$warn-900,
+    contrast: (
+        50: var.$font-color,
+        100: var.$font-color,
+        200: var.$font-color,
+        300: #ffffff,
+        400: #ffffff,
+        500: #ffffff,
+        600: #ffffff,
+        700: #ffffff,
+        800: #ffffff,
+        900: #ffffff
+    )
+);
+
+$my-app-primary: mat.define-palette($primary, 700);
+$my-app-accent: mat.define-palette($accent);
+$my-app-warn: mat.define-palette($warn);
+$my-app-theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $my-app-primary,
+            accent: $my-app-accent,
+            warn: $my-app-warn
+        ),
+        typography: typ.$my-typography
+    )
+);
+
+$material-theme-overrides: (
+    "color": (
+        "foreground": (
+            "text": var.$font-color
+        )
+    )
+);
+$theme: map.deep-merge($my-app-theme, $material-theme-overrides);
+
+@include mat.all-component-themes($theme);

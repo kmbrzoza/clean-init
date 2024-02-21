@@ -1,0 +1,33 @@
+# .NET
+obj/
+bin/
+*.dll
+*.exe
+*.pdb
+*.user
+*.vs/
+*.suo
+*.cache
+*log.txt
+
+# Angular
+node_modules/
+/dist/
+/tmp/
+*.log
+*.swp
+.idea/
+*.stackdump
+.angular/
+
+# DB
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+
+# Local resources
+/Insig.Api/Resources/*
+dist
+/Insig.Web/.vscode
+.vscode
+.nx

@@ -1,0 +1,26 @@
+<mat-drawer-container class="admin-wrapper"
+                      autosize>
+    <mat-drawer #drawer
+                class="drawer"
+                [class.drawer--collapsed]="collapsed()"
+                [opened]="true"
+                mode="side">
+        <div class="drawer__header">
+            <button mat-icon-button
+                    (click)="toggleDrawer()">
+                <mat-icon>menu</mat-icon>
+            </button>
+            <img src="/assets/images/logo.svg"
+                 alt="logo" />
+        </div>
+        <div class="drawer__content">
+            <app-admin-account [collapsed]="collapsed()" />
+            <app-admin-menu [collapsed]="collapsed()" />
+        </div>
+    </mat-drawer>
+
+    <div class="admin-wrapper__content">
+        <router-outlet />
+    </div>
+
+</mat-drawer-container>

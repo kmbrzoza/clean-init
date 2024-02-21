@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sign in</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+    <style>
+        main {
+            display: none;
+        }
+    </style>
+    <script>
+        const mainUri = "http://localhost:4200";
+        if (!!mainUri) {
+            const styles = document.createElement("link");
+            styles.rel = "stylesheet";
+            styles.type = "text/css";
+            styles.href = `${mainUri}/login-page.css`;
+            styles.setAttribute("data-preload", "true");
+            document.head.append(styles);
+        }
+    </script>
+</head>
+
+<body>
+    <main>
+        <div class="card">
+            <div id="api">
+            </div>
+        </div>
+    </main>
+</body>
+
+<script>
+    function setTabIndex(elementId, tabIndex) {
+        const element = document.getElementById(elementId);
+        if (!!element) {
+            element.tabIndex = tabIndex;
+        }
+    }
+
+    let tabIndex = 1;
+    setTabIndex("email", tabIndex++);
+    setTabIndex("password", tabIndex++);
+    setTabIndex("forgotPassword", tabIndex++);
+    setTabIndex("next", tabIndex++);
+    setTabIndex("createAccount", tabIndex++);
+
+    const commonScript = document.createElement("script");
+    commonScript.setAttribute("src", `${mainUri}/assets/login-pages/common.js`);
+    document.body.appendChild(commonScript);
+</script>
+
+</html>

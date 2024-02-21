@@ -1,0 +1,69 @@
+@use "variables" as var;
+@use "palette";
+@use "breakpoints";
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 3;
+    height: 60px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 0 64px;
+
+    @include breakpoints.size(sm) {
+        padding: 0 16px;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        @media only screen and (hover: none) and (pointer: coarse) {
+            justify-content: center;
+        }
+
+        .nav-title {
+            display: flex;
+
+            .image {
+                max-width: 46px;
+            }
+        }
+
+        nav {
+            margin-right: auto;
+            margin-left: 32px;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+
+            @include breakpoints.size(md) {
+                display: none;
+            }
+        }
+
+        .vertical-line {
+            border-right: solid 3px palette.$tertiary-100;
+            height: 31px;
+            margin-left: 32px;
+            margin-right: 32px;
+        }
+
+        .right-menu {
+            display: flex;
+        }
+
+        app-menu-hamburger {
+            display: none;
+
+            @include breakpoints.size(md) {
+                display: block;
+                margin-right: auto;
+            }
+        }
+    }
+}

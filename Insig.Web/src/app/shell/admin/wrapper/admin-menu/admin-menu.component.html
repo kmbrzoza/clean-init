@@ -1,0 +1,24 @@
+<div class="admin-menu">
+    <mat-list>
+        <div mat-subheader
+             [class.d-none]="collapsed()">Menu</div>
+        <mat-list-item routerLink="/admin"
+                       routerLinkActive="active"
+                       [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon matListItemIcon>home</mat-icon>
+            <div matListItemTitle>Dashboard</div>
+        </mat-list-item>
+        <mat-list-item routerLink="/admin/playground"
+                       routerLinkActive="active"
+                       [routerLinkActiveOptions]="{exact: true}">
+            <mat-icon matListItemIcon>toys</mat-icon>
+            <div matListItemTitle>Playground</div>
+        </mat-list-item>
+        <mat-list-item class="logout"
+                       (click)="onLogoutClick()">
+            <mat-icon matListItemIcon
+                      fontSet="material-icons-outlined">logout</mat-icon>
+            <div matListItemTitle>Wyloguj się</div>
+        </mat-list-item>
+    </mat-list>
+</div>

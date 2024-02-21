@@ -1,0 +1,55 @@
+@if((authStatus$ | async) === false){
+<div class="buttons">
+    <a role="button"
+       tabindex="0"
+       mat-button
+       color="primary"
+       (click)="login()"
+       (keyup.enter)="login()">
+        Log in
+    </a>
+
+    <a role="button"
+       tabindex="0"
+       mat-raised-button
+       color="primary"
+       (click)="register()"
+       (keyup.enter)="register()">
+        Register
+    </a>
+</div>
+}
+
+@if(authStatus$ | async){
+<div class="d-flex align-items-center">
+    @if(account(); as account){
+    <div class="user-menu"
+         (menuOpened)="menuOpened = true"
+         (menuClosed)="menuOpened = false"
+         [matMenuTriggerFor]="userMenu">
+        <app-profile-avatar [firstName]="account.username"
+                            [avatarSizePx]="36"
+                            [initialsFontSizePx]="14" />
+        <p class="user-menu__name">
+            {{ account.username }}
+        </p>
+        <mat-icon>{{
+            menuOpened ? 'expand_less' : 'expand_more'
+            }}</mat-icon>
+    </div>
+    <mat-menu class="custom-menu"
+              xPosition="before"
+              #userMenu>
+        <a mat-menu-item
+           [routerLink]="['/admin']"
+           *appRequiredRoles="[roles.Admin]">Admin panel</a>
+        <a tabindex="0"
+           mat-menu-item
+           (click)="signout()"
+           (keyup.enter)="signout()">
+            Wyloguj się
+        </a>
+    </mat-menu>
+    }
+</div>
+}

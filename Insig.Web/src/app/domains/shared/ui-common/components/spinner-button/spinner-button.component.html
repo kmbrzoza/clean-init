@@ -1,0 +1,11 @@
+<button mat-flat-button
+        color="accent"
+        [disabled]="loading"
+        (click)="onClick($event)">
+    <div class="d-flex align-items-center gap-2">
+        <ng-container *ngIf="loading">
+            <mat-spinner [diameter]="20"></mat-spinner>
+        </ng-container>
+        <ng-content></ng-content>
+    </div>
+</button>

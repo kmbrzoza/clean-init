@@ -1,0 +1,83 @@
+@use "palette";
+
+.admin-wrapper {
+    height: 100%;
+    background-color: palette.$tertiary-50;
+
+    .drawer {
+        width: 240px;
+        border: none;
+        background: transparent;
+        transition: width 200ms linear;
+
+        &::ng-deep {
+            .mat-drawer-inner-container {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        &--collapsed {
+            width: 64px;
+
+            .drawer__header {
+                grid-template-columns: 100%;
+                grid-template-areas: "img" "button";
+
+                img {
+                    width: 25px;
+                    margin: 0 auto;
+                    max-height: 20px;
+                }
+            }
+        }
+
+        &::ng-deep {
+            mat-drawer-content.mat-drawer-content {
+                overflow: hidden !important;
+            }
+        }
+
+        &__header {
+            display: grid;
+            align-items: center;
+            grid-template-columns: 1fr 1fr 48px;
+            grid-template-areas: "button img";
+            padding: 32px 8px;
+
+            button {
+                grid-area: button;
+            }
+
+            img {
+                grid-area: img;
+                width: 115px;
+                height: 32px;
+                object-fit: cover;
+                object-position: left center;
+                max-width: 40px;
+            }
+        }
+
+        &__content {
+            overflow: auto;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 100px;
+
+            app-admin-menu {
+                overflow: auto;
+            }
+        }
+    }
+
+    &__content {
+        margin: 32px;
+        height: calc(100svh - 64px);
+        overflow: auto;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0px 0px 20px 0px #e6e6e680;
+        padding: 32px;
+    }
+}
