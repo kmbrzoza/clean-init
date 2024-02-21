@@ -2,7 +2,7 @@
 This is a solution template for creating a Single Page App (SPA) with Angular 17 + .NET 8.0 + Azure B2C
 
 # Setup
-1. Ensure that you have valid Data Source (current: ".\\SQLEXPRESS") in ConnectionString (appsettings.json) in following projects: Insig.Api, Insig.Infrastructure
+1. Ensure that you have valid Data Source (current: ".") in ConnectionString (appsettings.json) in following projects: Insig.Api, Insig.Infrastructure
 
 2. Run database migrations ("dotnet ef database update") in following projects: Insig.Infrastructure
 
